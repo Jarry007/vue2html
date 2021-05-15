@@ -1,5 +1,6 @@
 <template>
-  <div class="drag-relative">
+ <!-- <div @dragstart="dragStart"  draggable="true" :canHandler='canHandler'> -->
+  <div class="drag-relative" @dragstart="dragStart"  draggable="true" :canHandler='canHandler'>
     <img v-if="isImg" class="item-img" :src="imgSrc" />
 
     <p
@@ -36,12 +37,19 @@ export default {
     text: {
       type: String,
     },
+       canHandler:{
+       type:Boolean,
+       default:false
+    }
   },
   data(){
       return {timer:null}
   },
   methods:{
-      
+      dragStart(e) {
+      // console.log('开始',e)
+      e.dataTransfer.setData("Dom", this.id);
+    },
   }
 };
 </script>

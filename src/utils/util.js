@@ -8,6 +8,7 @@ export class Img2Base{
         img_.crossOrigin = ''
 
         img_.src = this.img
+        console.log('zhuanhua')
         return new Promise((resolve,reject)=>{
             img_.onload = ()=>{
                 resolve(this.getImgData(img_))
